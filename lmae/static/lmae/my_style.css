@@ -18,13 +18,13 @@ html, body {
 }
 
 .main-header {
-    background-color: rgb(211, 213, 214);
+    background-color: rgb(211, 213, 214);    
     background-size: cover;
     border-bottom: 1px solid rgba(119, 119, 119, 0.575);
 }
 
 .nav-bar-buttons {
-    max-width: 600px;
+    max-width: 720px;
     height: 4em;
     display: flex;
 }
@@ -38,7 +38,7 @@ html, body {
     color: #222;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    min-width: 150px; 
+    min-width: 180px; 
 }
 
 .nav-btn:focus { outline: none;}
