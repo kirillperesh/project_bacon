@@ -13,3 +13,4 @@ class BasicTest(SimpleTestCase):
     def test_home(self):        
         response = self.client.get('/')
         self.assertContains(response, "Hello, Django!")
+# to test
