@@ -77,13 +77,17 @@ WSGI_APPLICATION = 'lmae_project.wsgi.application'
 
 if os.getenv('GITHUB_WORKFLOW'): # db for github auto-testing
     DATABASES = {
+        # 'default': {
+        #     'ENGINE': 'django.db.backends.postgresql',
+        #     'NAME': 'github-actions',
+        #     'USER': 'postgres',
+        #     'PASSWORD': 'postgres',
+        #     'HOST': 'localhost',
+        #     'PORT': '5432'
+        # }
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'github-actions',
-            'USER': 'postgres',
-            'PASSWORD': 'postgres',
-            'HOST': 'localhost',
-            'PORT': '5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
         }
     }
 else:
