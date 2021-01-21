@@ -49,8 +49,10 @@ jobs:
     - name: Run Migrations
       run: |
         python manage.py makemigrations
-        python manage.py migrate        
-        
+        python manage.py migrate     
+
+    # Runs tests, checks coverage and print out a report
     - name: Run tests
-      run: python manage.py test
-      
+      run: |
+        coverage run --source='.' --omit=*/venv/*,*/migrations/* manage.py test lmae
+        coverage report
