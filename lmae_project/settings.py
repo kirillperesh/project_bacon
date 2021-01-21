@@ -75,16 +75,28 @@ WSGI_APPLICATION = 'lmae_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bacon',
-        'USER': 'root',
-        'PASSWORD': '31101993',
-        'HOST': 'localhost',
-        'PORT': '3306',
+if os.getenv('GITHUB_WORKFLOW'): # db for github auto-testing
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'github-actions',
+            'USER': 'postgres',
+            'PASSWORD': 'postgres',
+            'HOST': 'localhost',
+            'PORT': '5432'
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'bacon',
+            'USER': 'root',
+            'PASSWORD': '31101993',
+            'HOST': 'localhost',
+            'PORT': '3306',
+        }
+    }
 
 
 # Password validation
