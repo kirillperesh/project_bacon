@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime
 from .models import *
+from .forms import *
 
 def home(request):
     return render(
@@ -36,6 +37,19 @@ def budget_edit(request):
         request,
         'lmae/budget_edit.html',
         {            
+            'date': datetime.now()
+        }
+    )
+
+def db_smth(request):
+    form_set = PersonFormSet(queryset=Person.objects.none())
+
+
+    return render(
+        request,
+        'lmae/db_smth.html',
+        {
+            'form_set': form_set,    
             'date': datetime.now()
         }
     )
