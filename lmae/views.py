@@ -4,21 +4,20 @@ from datetime import datetime
 from .models import *
 
 def home(request):
-    return HttpResponse("Hello, Django!")
+    return render(
+        request,
+        'lmae/base.html',
+        {            
+            'date': datetime.now()
+        }
+    )
 
 def base(request, name):
-
-    if '_' in name:
-        name_list = name.split('_', 1)
-        new_person = Person.objects.create(first_name=name_list[0], last_name=name_list[1])
-    else:        
-        new_person = Person.objects.create(first_name=name)
-
     return render(
         request,
         'lmae/base.html',
         {
-            'name': new_person,
+            'name': name,
             'date': datetime.now()
         }
     )
