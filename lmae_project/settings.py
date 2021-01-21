@@ -77,6 +77,7 @@ WSGI_APPLICATION = 'lmae_project.wsgi.application'
 
 if os.getenv('GITHUB_WORKFLOW'): # db for github auto-testing
     DATABASES = {
+        # might use this test DB after adding Docker CI
         # 'default': {
         #     'ENGINE': 'django.db.backends.postgresql',
         #     'NAME': 'github-actions',
