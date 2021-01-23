@@ -53,3 +53,39 @@ def db_smth(request):
             'date': datetime.now()
         }
     )
+
+def db_all(request):    
+
+    titles = dict()
+    data = dict()
+    for model in get_all_models():
+        titles[model.__name__] = [f.verbose_name for f in list(model._meta.get_fields())]
+        field_names[model.__name__] = [f.name for f in model._meta.get_fields()]
+        data[model.__name__] = [[getattr(ins, name) for name in field_names] for ins in model.objects.prefetch_related().all()]
+
+    return render(
+        request,
+        'lmae/db_all.html',
+        {
+            'titles': titles,  
+            'data': data,    
+            'date': datetime.now()
+        }
+    )
+
+
+
+# data = dict()
+# field_names = dict()
+# for model in get_all_models():    
+#     field_names[model.__name__] = [f.name for f in list(model._meta.get_fields())]
+    
+#     #data[model.__name__] = [[getattr(ins, name) for name in field_names[model.__name__]] for ins in model.objects.prefetch_related().all()]
+
+
+# print(field_names[City.__name__])
+
+# for ins in City.objects.prefetch_related().all():
+#     for name in field_names[City.__name__]:
+#         print(getattr(ins, name), end=' ')
+#     print('\n')
