@@ -31,8 +31,14 @@ class Person(models.Model):
 
 
         
-def get_all_models():
+def get_all_models(names = False):
     import inspect, sys
-    return [cls for name, cls in inspect.getmembers(sys.modules[__name__], inspect.isclass)]
+    if names:
+        return [name for name, cls in inspect.getmembers(sys.modules[__name__], inspect.isclass)]
+    else:
+        return [cls for name, cls in inspect.getmembers(sys.modules[__name__], inspect.isclass)]
 
-        
+def get_model(*, model_name):
+    import sys
+    return getattr(sys.modules[__name__], model_name)
+

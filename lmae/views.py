@@ -44,7 +44,6 @@ def budget_edit(request):
 def db_smth(request):
     form_set = PersonFormSet(queryset=Person.objects.none())
 
-
     return render(
         request,
         'lmae/db_smth.html',
@@ -73,19 +72,17 @@ def db_all(request):
         }
     )
 
+def db_add(request, table_name=''):
+    context = dict()
 
-
-# data = dict()
-# field_names = dict()
-# for model in get_all_models():    
-#     field_names[model.__name__] = [f.name for f in list(model._meta.get_fields())]
-    
-#     #data[model.__name__] = [[getattr(ins, name) for name in field_names[model.__name__]] for ins in model.objects.prefetch_related().all()]
-
-
-# print(field_names[City.__name__])
-
-# for ins in City.objects.prefetch_related().all():
-#     for name in field_names[City.__name__]:
-#         print(getattr(ins, name), end=' ')
-#     print('\n')
+    if not table_name:
+        context = {'tables_list': get_all_models(names=True)}        
+    else:             
+        #context = {'tables_list': [get_model(model_name=table_name).objects.all(),]}
+        form_set = get_FormSet(model_name=table_name)(queryset=get_model(model_name=table_name).objects.none())        
+        context = {'tables_list': [form_set,]}
+        
+    return render(
+        request,
+        'lmae/db_add.html', context        
+    )
