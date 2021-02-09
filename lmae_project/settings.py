@@ -144,5 +144,3 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR, 'static'),
 # )
 # STATIC_ROOT = os.path.join(BASE_DIR, 'lmae\static')
-
-DJANGO_SETTINGS_MODULE = '/lmae_project/settings.py'
