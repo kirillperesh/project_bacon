@@ -74,7 +74,6 @@ WSGI_APPLICATION = 'lmae_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
 if os.getenv('GITHUB_WORKFLOW'): # db for github auto-testing
     DATABASES = {
         # might use this test DB after adding Docker CI
