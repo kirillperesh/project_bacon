@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <h2 class="page-title">Вся БД</h2>
-        <div class="create-input">            
+        <div class="create-input">
 
             <div class="create-input-line input-group">
                 <div class="input-group-prepend ">
@@ -22,21 +22,21 @@
                                 <li><a href={% url 'db_add' table_name=table_name %}>{{ table_name }}</a></li>
                             {% endfor %}
                         {% else %}
-                            {% for form in tables_list|first %}                               
+                            {% for form in tables_list|first %}
                                 <form action="" method="POST">
                                     {% csrf_token %}
                                     {{ form }}
                                     <input type="submit" name="Submit">
-                                </form>                                
+                                </form>
                             {% endfor %}
                         {% endif%}
-                    </ul>                    
-                </div> 
+                    </ul>
+                </div>
             </div>
 
 
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-success">Сохранить</button>                
+                <button type="button" class="btn btn-success">Сохранить</button>
                 <button type="button" class="btn btn-danger">Назад</button>
             </div>
         </div>
